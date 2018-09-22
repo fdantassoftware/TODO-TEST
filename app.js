@@ -22,6 +22,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 
+// Here we set our endpoints
+
+app.get('/getAllTasks', main.getAllTasks);
+
+app.post('/createNewTask', main.createNewTask);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

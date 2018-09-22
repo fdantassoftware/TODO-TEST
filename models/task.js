@@ -19,4 +19,4 @@ TaskSchema.pre('save', function(next){
 });
 
 
-module.exports = mongoose.model('users', TaskSchema);
+module.exports = mongoose.model('tasks', TaskSchema);

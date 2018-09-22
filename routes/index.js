@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 
 
-//Setting up Database - Mongo  
+//Setting up Database - Mongo
 mongoose.connect('mongodb://fabiotest:fabio1993@ds117362.mlab.com:17362/todo-test');
 var db = mongoose.connection;
 
