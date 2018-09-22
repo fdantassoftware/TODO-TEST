@@ -26,8 +26,11 @@ app.use('/', indexRouter);
 
 app.get('/getAllTasks', main.getAllTasks);
 
-app.post('/createNewTask', main.createNewTask);
 
+
+
+app.post('/getTaskByID', main.getTaskByID);
+app.post('/createNewTask', main.createNewTask);
 app.post('/updateTaskStatus', main.updateTaskStatus);
 app.post('/deleteTaskByID', main.deleteTaskByID);
 

@@ -23,6 +23,25 @@ router.getAllTasks = function(req, res) {
     });
 }
 
+router.getTaskByID = function(req, res) {
+
+    // Create a result variable to be used later when sending json
+    var result = {};
+
+    // Get Task by a given id
+
+    Task.find({"_id": req.body.id}, function (error, task) {
+       if (error) {
+           result.errorDescription = 'Error while retrieving task';
+           result.errorCode = -1;
+           res.json(result);
+       } else {
+           res.json(task);
+       }
+    });
+
+}
+
 
 router.createNewTask = function(req, res) {
 
@@ -92,6 +111,7 @@ router.deleteTaskByID = function(req, res) {
     // Create a result variable to be used later when sending json
     var result = {};
 
+    // Attempt to delete record
     Task.findByIdAndRemove(req.body.id, function (error) {
        if (error) {
            result.errorDescription = 'Error while deleting record';
