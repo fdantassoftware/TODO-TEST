@@ -83,8 +83,27 @@ router.updateTaskStatus = function(req, res) {
             result.errorCode = 0;
         }
         res.json(result);
-        
+
     });
+}
+
+
+router.deleteTaskByID = function(req, res) {
+    // Create a result variable to be used later when sending json
+    var result = {};
+
+    Task.findByIdAndRemove(req.body.id, function (error) {
+       if (error) {
+           result.errorDescription = 'Error while deleting record';
+           result.errorCode = -1;
+       } else {
+           result.errorDescription = null;
+           result.errorCode = 0;
+       }
+        res.json(result);
+
+    });
+
 }
 
 
