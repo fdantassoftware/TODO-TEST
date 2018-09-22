@@ -5,7 +5,22 @@ var Task = require('../models/task');
 var mongoose = require('mongoose');
 
 router.getAllTasks = function(req, res) {
-    console.log('working');
+
+    // Create a result variable to be used later when sending json
+    var result = {};
+
+    // Here we return all tasks
+
+    Task.find(function (error, tasks) {
+        if (error) {
+            result.errorDescription = 'Error while retrieving tasks';
+            result.errorCode = -1;
+            res.json(result);
+        } else {
+            // Here we send the tasks instead
+            res.json(tasks);
+        }
+    });
 }
 
 
