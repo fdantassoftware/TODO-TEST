@@ -43,6 +43,26 @@ router.getTaskByID = function(req, res) {
 }
 
 
+router.getAllCompletedTasks = function(req, res) {
+
+    // Create a result variable to be used later when sending json
+    var result = {};
+
+    // Get Task by a given id
+
+    Task.find({"status": 'completed'}, function (error, task) {
+        if (error) {
+            result.errorDescription = 'Error while retrieving task';
+            result.errorCode = -1;
+            res.json(result);
+        } else {
+            res.json(task);
+        }
+    });
+
+}
+
+
 router.createNewTask = function(req, res) {
 
     // Create a result variable to be used later when sending json
@@ -86,7 +106,7 @@ router.updateTaskStatus = function(req, res) {
     // Create a result variable to be used later when sending json
     var result = {};
 
-    // Here we grab the ID from The post request and attempt to update the record
+    // Here we grab the ID from The post request and attempt to update the record as completed
     Task.findOneAndUpdate({_id: req.body.id}, {
         $set: {
             "status": 'completed',

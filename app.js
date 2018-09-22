@@ -25,7 +25,7 @@ app.use('/', indexRouter);
 // Here we set our endpoints
 
 app.get('/getAllTasks', main.getAllTasks);
-
+app.get('/getAllCompletedTasks', main.getAllCompletedTasks);
 
 
 
