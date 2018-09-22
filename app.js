@@ -28,6 +28,8 @@ app.get('/getAllTasks', main.getAllTasks);
 
 app.post('/createNewTask', main.createNewTask);
 
+app.post('/updateTaskStatus', main.updateTaskStatus);
+
 
 
 // catch 404 and forward to error handler

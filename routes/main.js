@@ -63,6 +63,30 @@ router.createNewTask = function(req, res) {
 
 }
 
+router.updateTaskStatus = function(req, res) {
+    // Create a result variable to be used later when sending json
+    var result = {};
+
+    // Here we grab the ID from The post request and attempt to update the record
+    Task.findOneAndUpdate({_id: req.body.id}, {
+        $set: {
+            "status": 'completed',
+        }
+    }, {upsert: true}, function (error, task) {
+
+        if (error) {
+            result.errorDescription = 'Error while updating record';
+            result.errorCode = -1;
+
+        } else {
+            result.errorDescription = null;
+            result.errorCode = 0;
+        }
+        res.json(result);
+        
+    });
+}
+
 
 
 module.exports = router;
